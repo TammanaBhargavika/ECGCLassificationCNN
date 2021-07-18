@@ -34,9 +34,18 @@
         </div>
         <div style="font-size: xx-large;">
             <form action="/predict" method="post" enctype="multipart/form-data">
-                <br><input type="file" name="file" class="upload" value="Upload" required/><br><br>
+                <br><input type="file" name="file" id="file" onchange='triggerValidation(this)' accept=".csv" class="upload" value="Upload" required/><br><br>
                 <input type="submit" class="button" name="predict" value="Predict"/>
             </form>
+            <script>
+                var regex = new RegExp("(.*?)\.(csv)$");
+                function triggerValidation(el) {
+                    if (!(regex.test(el.value.toLowerCase()))) {
+                        el.value = '';
+                        alert('Please select correct file format');
+                    }
+                }
+            </script>
         </div>
     </body>
 </html>

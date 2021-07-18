@@ -49,4 +49,5 @@ def predict():
     return render_template('result.html',name=restring)
 
 if __name__== "__main__":
-    app.run()
+    app.config['TEMPLATES_AUTO_RELOAD']=True
+    app.run(debug=True)
